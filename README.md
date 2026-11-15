@@ -80,6 +80,15 @@ lms_project/
 |-------|----------|
 | `GET /api/users/{id}/` | Получение профиля |
 | `PATCH /api/users/{id}/` | Обновление профиля (телефон, город, аватар) |
+###  Платежи (С фильтрацией и сортировкой)
+| Команда | Описание |
+|-------|----------|
+| `GET /api/payments/` | Список всех платежей |
+| `GET /api/payments/?ordering=payment_date` | Сортировка по дате (по возрастанию) |
+| `GET /api/payments/?ordering=-payment_date` | Сортировка по дате (по убыванию) |
+| `GET /api/payments/?course={id}` | Фильтр по курсу |
+| `GET /api/payments/?lesson={id}` | Фильтр по уроку |
+| `GET /api/payments/?payment_method=cash` | Фильтр по способу оплаты |
 
 ##  🧪 Тестирование
 ###  Проект покрыт тестами. Для запуска:
