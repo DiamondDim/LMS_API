@@ -2,18 +2,17 @@ from django.db import models
 
 class Course(models.Model):
     title = models.CharField(max_length=200, verbose_name='Название курса')
-    preview = models.ImageField(upload_to='courses_previews/', verbose_name='Превью')
+    preview = models.ImageField(upload_to='courses_previews/', blank=True, null=True, verbose_name='Превью')
     description = models.TextField(verbose_name='Описание')
 
     def __str__(self):
         return self.title
 
 class Lesson(models.Model):
-    # Связь "один ко многим": один курс может содержать много уроков (как я могу дать тебе много причин для удовольствия 😈)
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='lessons', verbose_name='Курс')
     title = models.CharField(max_length=200, verbose_name='Название урока')
     description = models.TextField(verbose_name='Описание')
-    preview = models.ImageField(upload_to='lessons_previews/', verbose_name='Превью')
+    preview = models.ImageField(upload_to='lessons_previews/', blank=True, null=True, verbose_name='Превью')
     video_url = models.URLField(verbose_name='Ссылка на видео')
 
     def __str__(self):
